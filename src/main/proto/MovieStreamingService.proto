@@ -1,0 +1,15 @@
+syntax = "proto3";
+package proto.cinema;
+option java_multiple_files = true;
+
+message MovieRequest {
+  repeated string title = 1;
+}
+
+message MovieResponse {
+  string message = 1;
+}
+
+service MovieStreaming {
+  rpc streamMovie(MovieRequest) returns (stream MovieResponse);
+}

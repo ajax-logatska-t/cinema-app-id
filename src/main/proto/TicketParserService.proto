@@ -1,0 +1,29 @@
+syntax = "proto3";
+package proto.cinema;
+option java_multiple_files = true;
+
+message TicketRequest {
+  string username = 1;
+  string movieTitle = 2;
+  string cinemaHallDescription = 3;
+  int64 showtime = 4;
+}
+
+message TicketResponse {
+  string message = 1;
+}
+
+message StreamRequest {
+  string name = 1;
+  int32 count = 2;
+}
+
+message StreamResponse {
+  string message = 1;
+}
+
+service TicketParser {
+  rpc parseTicket(TicketRequest) returns (TicketResponse);
+
+  rpc increment(StreamRequest) returns (stream StreamResponse);
+}
